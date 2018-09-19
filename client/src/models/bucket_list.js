@@ -6,6 +6,8 @@ const BucketList = function() {
   this.request = new Request(this.url);
 };
 
+// subscribe to the FormView:submitted-input channel and take the entry that was published on it
+// call the postForm method and pass in the new entry
 BucketList.prototype.bindEvents = function(){
   PubSub.subscribe('FormView:submitted-input', (event) => {
       this.postForm(event.detail);
@@ -13,6 +15,7 @@ BucketList.prototype.bindEvents = function(){
   })
 };
 
+// get all the data in the collection and publish it on BucketList:data-loaded
 BucketList.prototype.getData = function(){
   this.request.get()
     .then((listItems) => {
@@ -21,6 +24,8 @@ BucketList.prototype.getData = function(){
     .catch(console.error);
 }
 
+// post the entry to the database
+// publish that the data was posted on BucketList:data-loaded
 BucketList.prototype.postForm = function(listItem) {
   //console.log(listItem);
   this.request.post(listItem)

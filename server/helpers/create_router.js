@@ -3,6 +3,7 @@ const ObjectID = require('mongodb').ObjectID;
 
 const createRouter = function (collection) {
 
+  // all the routes for reading and writing to the database (we only did show all and create!)
   const router = express.Router();
 
   // INDEX
@@ -19,7 +20,7 @@ const createRouter = function (collection) {
   });
 
   // SHOW
-
+  // get request with id route goes here
 
   // CREATE
   router.post('/', (req, res) => {
@@ -38,9 +39,10 @@ const createRouter = function (collection) {
 
 
   // UPDATE
-
+  // put request with new data route goes here
 
   // DELETE
+  // delete request with id route goes here
 
   return router;
 };
